@@ -36,19 +36,9 @@ const useForm = () => {
       },
       body: JSON.stringify(value)
     })
-      .then(response => {
-        if (response.status >= 500) {
-          console.log(
-            response.status,
-            "Server errors. Something went wrong. The server is not responding."
-          );
-        } else if (response.status >= 400) {
-          console.log(response.status, "Client errors. Something went wrong.");
-        } else {
-          return response.json();
-        }
-      })
-      .then(data => console.log(data));
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.log(error));
   };
 
   const handleSubmit = e => {
