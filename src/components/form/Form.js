@@ -78,7 +78,12 @@ const Form = () => {
             />
           ) : null}
         </div>
-        {error && <Error>Enter preparation time</Error>}
+        {error && (
+          <Error>
+            Enter preparation time, all three fields should be filled in (e.g.
+            01:15:24)
+          </Error>
+        )}
         <Button type="submit">Send</Button>
       </FormGroup>
     </FormWrapper>
@@ -182,6 +187,8 @@ const Button = styled.button`
 `;
 
 const Error = styled.p`
+  width: 80%;
+  margin: 0 auto;
   text-align: center;
   color: red;
   font-size: 20px;

@@ -12,12 +12,16 @@ const useForm = () => {
   const handleChange = e => {
     setValue({
       ...value,
-      [e.target.name]: e.target.value
+      [e.target.name]:
+        e.target.type === "number" ? parseInt(e.target.value) : e.target.value
     });
   };
 
   const formValidate = () => {
-    if (value.preparation_time !== "00:00:00") {
+    if (
+      value.preparation_time !== "00:00:00" &&
+      value.preparation_time.length > 5
+    ) {
       return true;
     }
   };
@@ -60,4 +64,5 @@ const useForm = () => {
   };
   return [value, handleChange, handleSubmit, err];
 };
+
 export default useForm;
