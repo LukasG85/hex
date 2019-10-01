@@ -134,7 +134,10 @@ const FormGroup = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: 100px;
+  padding-top: 10px;
+  @media (min-width: 576px) {
+    padding-top: 100px;
+  }
 `;
 const Input = styled.input`
   display: block;
