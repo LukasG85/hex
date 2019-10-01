@@ -23,19 +23,28 @@ const useForm = () => {
   };
 
   const sendDish = () => {
-    const url = "https://jsonplaceholder.typicode.com/posts";
+    const url = "https://frosty-wood-6558.getsandbox.com:443/dishes";
+
     fetch(url, {
-      method: "post",
+      method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(value)
-    }).then(response =>
-      response
-        .json()
-        .then(data => console.log(data))
-        .then(error => console.log(error))
-    );
+    })
+      .then(response => {
+        if (response.status >= 500) {
+          console.log(
+            response.status,
+            "Server errors. Something went wrong. The server is not responding."
+          );
+        } else if (response.status >= 400) {
+          console.log(response.status, "Client errors. Something went wrong.");
+        } else {
+          return response.json();
+        }
+      })
+      .then(data => console.log(data));
   };
 
   const handleSubmit = e => {

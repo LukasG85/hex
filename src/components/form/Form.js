@@ -79,7 +79,7 @@ const Form = () => {
           ) : null}
         </div>
         {error && <Error>Enter preparation time</Error>}
-        <Button type="submit">Wyślij</Button>
+        <Button type="submit">Send</Button>
       </FormGroup>
     </FormWrapper>
   );
